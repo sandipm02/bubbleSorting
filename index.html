@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+    <div className="background"></div>
+
+
+    <head>
+        <title> Bubble Sorting </title>
+        <link rel = "stylesheet" href="style.css">
+        <script src = "sortingAlgo.js"></script>
+        <script src = "chart.min.js"></script>
+    </head>
+
+
+    <body>
+        <h1 className = "center" > Bubble Sorting </h1>
+        <div className="buttonContainer">
+            <input  class="center-block" type ="button" value = "Show Bar Chart" onClick="drawGraphBar()">
+            <input  class="center-block" type ="button" value = "Show Polar Area Chart" onClick="drawGraphPolar()">
+            <input class="center-block" type ="button" value = "Sort Array" onClick="valueSort()">
+            <input class="center-block" type ="button" value = "New Array" onClick="resetValue()">
+        </div>
+        
+
+        <canvas id="dataChart"> </canvas>
+
+
+        <script>
+            var graphCreate = document.getElementById('dataChart').getContext('2d');
+            var dataChart = new Chart (graphCreate, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Element 1', 'Element 2', 'Element 3', 'Element 4', 'Element 5', 'Element 6', 'Element 7', 'Element 8',
+                        'Element 9', 'Element 10', 'Element 11', 'Element 12', 'Element 13', 'Element 14', 'Element 15', 'Element 16', 
+                        'Element 17', 'Element 18', 'Element 19', 'Element 20','Element 21', 'Element 22', 'Element 23', 'Element 24',
+                        'Element 25', 'Element 26', 'Element 27', 'Element 28', 'Element 29', 'Element 30', 'Element 31', 'Element 32',
+                        'Element 33', 'Element 34', 'Element 35', 'Element 36','Element 37', 'Element 38', 'Element 39', 'Element 40'
+                ],
+                    datasets: [{
+                        data:array,
+                        backgroundColor:"rgba(39, 60, 117, 0.70)",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    legend: {
+                        display:false
+                    }
+                }
+            });
+
+            function drawGraphBar() {
+                dataChart.destroy();
+                dataChart = new Chart (graphCreate, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Element 1', 'Element 2', 'Element 3', 'Element 4', 'Element 5', 'Element 6', 'Element 7', 'Element 8',
+                        'Element 9', 'Element 10', 'Element 11', 'Element 12', 'Element 13', 'Element 14', 'Element 15', 'Element 16', 
+                        'Element 17', 'Element 18', 'Element 19', 'Element 20','Element 21', 'Element 22', 'Element 23', 'Element 24',
+                        'Element 25', 'Element 26', 'Element 27', 'Element 28', 'Element 29', 'Element 30', 'Element 31', 'Element 32',
+                        'Element 33', 'Element 34', 'Element 35', 'Element 36','Element 37', 'Element 38', 'Element 39', 'Element 40'
+                ],
+                    datasets: [{
+                        data:array,
+                        backgroundColor:"rgba(39, 60, 117, 0.70)",
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    legend: {
+                        display:false
+                    }
+                }
+            });
+            }
+
+            function drawGraphPolar() {
+                dataChart.destroy();
+                dataChart = new Chart (graphCreate, {
+                type: 'polarArea',
+                data: {
+                    labels: [
+                        'Element 1', 'Element 2', 'Element 3', 'Element 4', 'Element 5', 'Element 6', 'Element 7', 'Element 8',
+                        'Element 9', 'Element 10', 'Element 11', 'Element 12', 'Element 13', 'Element 14', 'Element 15', 'Element 16', 
+                        'Element 17', 'Element 18', 'Element 19', 'Element 20','Element 21', 'Element 22', 'Element 23', 'Element 24',
+                        'Element 25', 'Element 26', 'Element 27', 'Element 28', 'Element 29', 'Element 30', 'Element 31', 'Element 32',
+                        'Element 33', 'Element 34', 'Element 35', 'Element 36','Element 37', 'Element 38', 'Element 39', 'Element 40'
+                ],
+                    datasets: [{
+                        data:array,
+                        backgroundColor:"rgba(39, 60, 117, 0.70)",
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    legend: {
+                        display:false
+                    }
+                }
+            });
+            }
+
+            function valueSort() {
+                dataChart.data.datasets[0].data = bubblePushedArray;
+                dataChart.update();
+            }
+
+            function resetValue() {
+                createArray();
+                sortUsingBubbleMethod(array);
+                dataChart.data.datasets[0].data = array;
+                dataChart.update();
+            }
+        </script>
+    </body>
+</div>
+</html>
